@@ -1,0 +1,74 @@
+/* About page container */
+div {
+    text-align: center;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Card container */
+  .card {
+    display: inline-block;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    width: 200px;
+    padding: 15px;
+    transition: transform 0.2s;
+  }
+  
+  /* Card hover effect */
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Card image */
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Card title (h1) */
+  .card h1 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  /* About page heading */
+  h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #555;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    padding: 0 15px;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw; /* Ensures it covers full width */
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
