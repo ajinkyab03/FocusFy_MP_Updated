@@ -1,0 +1,135 @@
+/* App.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: #333;
+  }
+  
+  .timetable-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .subject-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    resize: none;
+    font-size: 16px;
+  }
+  
+  .interval-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .interval-label {
+    font-size: 16px;
+  }
+  
+  .interval-input {
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+  }
+  
+  .get-timetable-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .get-timetable-button:hover {
+    background-color: #ff4f41;
+  }
+  
+  .timetable-list {
+    margin-top: 20px;
+  }
+  
+  .timetable-item {
+    list-style-type: none;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .timetable-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .timetable-item.marked {
+    text-decoration: line-through;
+    color: #999;
+  }
+
+  .quote-generator {
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .controls {
+    margin: 20px 0;
+  }
+  
+  select, input {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .quote-display {
+    margin-top: 20px;
+  }
+  
+  .timer {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  

@@ -1,64 +1,44 @@
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-// import toast from 'react-hot-toast'
-// import logo from '../assets/logo.png'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import {faHouse} from "@fortawesome/free-solid-svg-icons"
-// import {faCircleInfo} from "@fortawesome/free-solid-svg-icons"
-// import {faAddressBook} from "@fortawesome/free-solid-svg-icons"
-
-
-// const Navbar = () => {
-//   return (
-//     <div className=' fixed top-0 left-0 flex ml-[80px] justify-evenly h-[100px] w-[80%] bg-blue-400 bg-opacity-50 mt-[20px] pt-[20px] rounded-xl'>
-//         <div className=''>
-//             {/* <img src={logo} alt="" className='w-[200px] h-[100px] mt-[-25px]' /> */}
-//         </div>
-
-//         <div className='h-full w-full'>
-//             <ul className='flex justify-evenly items-center p-[10px]'>
-//                 <Link to='/'><li><FontAwesomeIcon icon={faHouse} className='h-[30px]' /></li></Link>
-//                 <Link to='/about'><li><FontAwesomeIcon icon={faCircleInfo} className='h-[30px]'/></li></Link>
-//                 <Link to='/contact'><li><FontAwesomeIcon icon={faAddressBook} className='h-[30px]' /></li></Link>
-//             </ul>
-//         </div>
-
-//     </div>
-//   )
-// }
-
-// export default Navbar
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import Logout from './Logout';
 
 export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
-    const button={marginRight:'20px', fontSize:'1.2rem', fontWeight:'700', padding:'0.3rem 1.4rem'}
     return (
-            <AppBar sx={{ bgcolor: '#333' }}>
-                <Toolbar>
-                    <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                        Tech Coffee Break
-                    </Typography>
-                    {!isLoggedIn ? (
-                        <>
-                            <Button variant="contained" style={button} color="error" component={Link} to="/login">
-                                Login 
-                            </Button>
-
-                            <Button variant="contained" style={button} color="success" component={Link} to="/signup">
+        <div className="bg-gradient-to-r from-purple-600 to-blue-500 text-white flex justify-between items-center p-4 shadow-lg">
+            <h1 className="text-3xl font-extrabold tracking-tight">FocusFy</h1>
+            <div className="flex items-center space-x-4">
+                {!isLoggedIn ? (
+                    <>
+                        <Link to="/login">
+                            <button className="bg-red-500 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-red-600 transition-all transform hover:scale-105">
+                                Login
+                            </button>
+                        </Link>
+                        <Link to="/signup">
+                            <button className="bg-green-500 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-105">
                                 Signup
-                            </Button>
-                        </>
-                    ) : (
-                        <Logout setIsLoggedIn={setIsLoggedIn} />
-                    )}
-                </Toolbar>
-            </AppBar>
+                            </button>
+                        </Link>
+                        <Link to="/quote">
+                            <button className="bg-indigo-500 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-indigo-600 transition-all transform hover:scale-105">
+                                BreakTime
+                            </button>
+                        </Link>
+                        <Link to="/dashboard">
+                            <button className="bg-yellow-500 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-yellow-600 transition-all transform hover:scale-105">
+                                Dashboard
+                            </button>
+                        </Link>
+                        <Link to="/about">
+                            <button className="bg-teal-500 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-teal-600 transition-all transform hover:scale-105">
+                                About
+                            </button>
+                        </Link>
+                    </>
+                ) : (
+                    <Logout setIsLoggedIn={setIsLoggedIn} />
+                )}
+            </div>
+        </div>
     );
 };

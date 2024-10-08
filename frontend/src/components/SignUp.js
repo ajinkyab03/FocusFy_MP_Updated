@@ -1,59 +1,102 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Grid, Link, Button, Paper, TextField, Typography } from "@mui/material";
+import bg from './assets/bg.mp4';
 
+function SignUp() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-function SignUp(){
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+  const handleSignup = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/signup", { name, email, password })
+      .then((result) => {
+        if (result.status === 201) {
+          navigate("/login");
+        }
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 400) {
+          window.alert("Email already exists. Please use a different email.");
+        } else {
+          console.log(err);
+        }
+      });
+  };
 
-    const handleSignup = (e) => {
-        e.preventDefault();
-        axios.post("http://localhost:3001/signup", { name, email, password })
-            .then(result => {
-                if (result.status === 201) {
-                    navigate("/login");
-                }
-            })
-            .catch(err => {
-                if (err.response && err.response.status === 400) {
-                    window.alert("Email already exists. Please use a different email.");
-                } else {
-                    console.log(err);
-                }
-            });
-    };
-    const paperStyle = {padding: "2rem", margin: "100px auto", borderRadius:"1rem", boxShadow: "10px 10px 10px"};
-    const heading = {fontSize:"2.5rem", fontWeight:"600"}
-    const row = {display:"flex", marginTop:"2rem"}
-    const btnStyle={marginTop:"2rem", fontSize:"1.2rem", fontWeight:"700", backgroundColor:"blue", borderRadius:"0.5rem"};
-    return (
-        <div>
-            <Grid align="center" className="wrapper">
-                <Paper style={paperStyle} sx={{width: {
-                    xs: '80vw',     // 0
-                    sm: '50vw',     // 600
-                    md: '40vw',     // 900
-                    lg: '30vw',     // 1200
-                    xl: '20vw',     // 1536 
-                },
-                height:{
-                    lg: '60vh',     // 1200px and up
-                }}}>
-                    <Typography component="h1" variant="h5" style={heading}> Signup </Typography>
-                    <form onSubmit={handleSignup}>
-                        <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth type="text" label="Enter Name" name="name" onChange={(e)=>setName(e.target.value)}></TextField>
-                        <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth label="Email" variant="outlined" type="email" placeholder="Enter Email" name="email" onChange={(e)=>setEmail(e.target.value)}/>                    
-                        <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth label="Password" variant="outlined" type="password" placeholder="Enter Password" name="password" onChange={(e)=>setPassword(e.target.value)} />
-                        <Button style={btnStyle} variant="contained" type="submit">SignUp</Button>
-                    </form>
-                    <p>Already have an account?<Link href="/login"> Login</Link></p>
-                </Paper>
-            </Grid>
-        </div>
-    )
+  return (
+    <div className="relative min-h-screen flex items-center justify-center bg-gray-100">
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+      >
+        <source src={bg} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div className="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-full max-w-md z-10">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          Create Your Account
+        </h2>
+        <form onSubmit={handleSignup}>
+          <div className="mb-6">
+            <label className="block text-gray-700 text-lg font-semibold mb-2">
+              Full Name
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-500 focus:outline-none"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-gray-700 text-lg font-semibold mb-2">
+              Email Address
+            </label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-500 focus:outline-none"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-gray-700 text-lg font-semibold mb-2">
+              Password
+            </label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-500 focus:outline-none"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded-lg text-lg font-semibold hover:bg-blue-600 transition duration-300"
+          >
+            Sign Up
+          </button>
+        </form>
+
+        <p className="text-center text-gray-600 mt-6">
+          Already have an account?{" "}
+          <a href="/login" className="text-blue-500 font-bold hover:underline">
+            Login
+          </a>
+        </p>
+      </div>
+    </div>
+  );
 }
+
 export default SignUp;

@@ -1,5 +1,3 @@
-
-
 import cv2
 import mediapipe as mp
 import base64
@@ -160,5 +158,4 @@ def generate_frame():
         yield frame_encoded, posture_status, blink_count
     
     cap.release()
-
 
