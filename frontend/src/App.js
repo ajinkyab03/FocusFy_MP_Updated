@@ -56,6 +56,7 @@ import WebcamControl from './components/WebcamControl';
 import axios from "axios";
 import QuotesGenerator from "./components/QuotesGenerator";
 import About from "./components/About";
+import Timetable from "./components/Timetable";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -90,6 +91,7 @@ function App() {
           <Route path="/login" element={isLoggedIn ? <Navigate to="/home" /> : <Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
           <Route path="/signup" element={isLoggedIn ? <Navigate to="/home" /> : <SignUp setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/about" element={<About/>} />
+          <Route path="/timetable" element={<Timetable/>} />
 
         </Routes>
       </BrowserRouter>
